@@ -8,6 +8,12 @@
             {{#with difficulty}}
                 <div class="RecipeModule-difficulty"><span>{{format "difficulty"}}:</span> {{this}}</div>
             {{/with}}
+            {{#with taste}}
+                <div class="RecipeModule-taste"><span>{{format "taste"}}:</span> {{this}}</div>
+            {{/with}}
+             {{#with preprepTime}}
+                 <div class="RecipeModule-preprepTime"><span>{{format "preprepTime"}}:</span> {{this}}</div>
+             {{/with}}
             {{#with totalTime}}
                 <div class="RecipeModule-totalTime"><span>{{format "totalTime"}}:</span> {{this}}</div>
             {{/with}}

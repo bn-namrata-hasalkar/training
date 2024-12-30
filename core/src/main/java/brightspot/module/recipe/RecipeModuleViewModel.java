@@ -8,6 +8,7 @@ import java.util.Optional;
 import brightspot.l10n.CurrentLocale;
 import brightspot.recipe.Difficulty;
 import brightspot.recipe.Recipe;
+import brightspot.recipe.Taste;
 import brightspot.util.RichTextUtils;
 import com.psddev.cms.view.ViewModel;
 import com.psddev.styleguide.recipe.RecipeModuleView;
@@ -72,6 +73,18 @@ public class RecipeModuleViewModel extends ViewModel<AbstractRecipeModule> imple
     @Override
     public CharSequence getPrepTime() {
         return formatDuration(recipe.getPrepTime());
+    }
+
+    @Override
+    public CharSequence getPreprepTime() {
+        return formatDuration(recipe.getTotalTime());
+    }
+
+    @Override
+    public CharSequence getTaste() {
+        return Optional.ofNullable(recipe.getTaste())
+                .map(Taste::toString)
+                .orElse(null);
     }
 
     @Override

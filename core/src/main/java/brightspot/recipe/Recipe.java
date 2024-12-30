@@ -26,6 +26,7 @@ public class Recipe extends Content implements
 
     public static final String COOK_TIME_FIELD = "cookTime";
     public static final String DIFFICULTY_FIELD = "difficulty";
+    public static final String PRE_PREP_TIME = "preprepTime";
     public static final String INACTIVE_PREP_TIME_FIELD = "inactivePrepTime";
     public static final String PREP_TIME_FIELD = "prepTime";
     public static final String RECIPE_TAG_NAMES_FIELD = "getRecipeTagNames";
@@ -46,6 +47,9 @@ public class Recipe extends Content implements
     @Indexed
     private Difficulty difficulty;
 
+    @Indexed
+    private Taste taste;
+
     @ToolUi.RichText(inline = false, toolbar = SmallRichTextToolbar.class)
     private String ingredients;
 
@@ -56,6 +60,12 @@ public class Recipe extends Content implements
 
     @Indexed
     private List<RecipeTag> recipeTags;
+
+    @Indexed
+    @Note("Value is in minutes")
+    @ToolUi.Cluster(TIMING_CLUSTER)
+    @ToolUi.CssClass("is-third")
+    private Integer preprepTime;
 
     @Indexed
     @Note("Value is in minutes")
@@ -81,6 +91,9 @@ public class Recipe extends Content implements
     @ToolUi.Cluster(TIMING_CLUSTER)
     private Integer totalTimeOverride;
 
+    @ToolUi.CssClass("is-half")
+    private Boolean hideTestType;
+
     // --- Getters/setters ---
 
     public String getTitle() {
@@ -105,6 +118,14 @@ public class Recipe extends Content implements
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Taste getTaste() {
+        return taste;
+    }
+
+    public void setTaste(Taste taste) {
+        this.taste = taste;
     }
 
     public String getIngredients() {
@@ -142,6 +163,14 @@ public class Recipe extends Content implements
         this.recipeTags = recipeTags;
     }
 
+    public Integer getPrePrepTime() {
+        return preprepTime;
+    }
+
+    public void setPreprepTime(Integer preprepTime) {
+        this.preprepTime = preprepTime;
+    }
+
     public Integer getPrepTime() {
         return prepTime;
     }
@@ -174,6 +203,13 @@ public class Recipe extends Content implements
         this.totalTimeOverride = totalTimeOverride;
     }
 
+    public Boolean getHideTestType() {
+        return hideTestType;
+    }
+
+    public void setHideTestType(Boolean hideTestType) {
+        this.hideTestType = hideTestType;
+    }
     // --- API methods ---
 
     @Indexed

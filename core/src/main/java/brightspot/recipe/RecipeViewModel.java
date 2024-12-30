@@ -38,6 +38,16 @@ public class RecipeViewModel extends ViewModel<Recipe> implements RecipeModuleVi
     }
 
     @Override
+    public CharSequence getTaste() {
+        if (model.getHideTestType()) {
+            return null;
+        }
+        return Optional.ofNullable(model.getTaste())
+                .map(Taste::toString)
+                .orElse(null);
+    }
+
+    @Override
     public Iterable<? extends RecipeModuleViewDirectionsField> getDirections() {
         return RichTextUtils.buildHtml(
             model,
@@ -66,6 +76,11 @@ public class RecipeViewModel extends ViewModel<Recipe> implements RecipeModuleVi
     @Override
     public CharSequence getPrepTime() {
         return formatDuration(model.getPrepTime());
+    }
+
+    @Override
+    public CharSequence getPreprepTime() {
+        return formatDuration(model.getPrePrepTime());
     }
 
     @Override

@@ -9,6 +9,8 @@
     "_template": "/image/Image.hbs"
   },
   "difficulty": "",
+  "taste": "",
+  "preprepTime": "",
   "prepTime": "",
   "inactivePrepTime": "",
   "cookTime": "",
